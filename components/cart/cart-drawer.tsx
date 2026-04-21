@@ -7,7 +7,7 @@ import { useCart } from "@/components/cart/cart-context"
 import { formatInr } from "@/lib/products"
 import { cn } from "@/lib/utils"
 
-const STORE_WHATSAPP = "919043029496"
+const STORE_WHATSAPP = "918056418040"
 
 function buildWhatsAppMessage(
   resolved: ReturnType<typeof useCart>["resolved"],

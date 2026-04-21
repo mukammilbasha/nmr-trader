@@ -77,9 +77,9 @@ export function ContactCta() {
                 size="lg"
                 className="group rounded-full bg-accent px-6 text-accent-foreground hover:bg-accent/90"
               >
-                <Link href="tel:+919043029496">
+                <Link href="tel:+918056418040">
                   <Phone className="mr-2 h-4 w-4 transition-transform group-hover:rotate-12" />
-                  Call +91 90430 29496
+                  Call +91 80564 18040
                 </Link>
               </Button>
               <Button
@@ -88,7 +88,7 @@ export function ContactCta() {
                 variant="outline"
                 className="group rounded-full border-primary-foreground/30 bg-transparent px-6 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
               >
-                <Link href="https://wa.me/919043029496" target="_blank" rel="noopener noreferrer">
+                <Link href="https://wa.me/918056418040" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-4 w-4 transition-transform group-hover:-rotate-12" />
                   WhatsApp Us
                 </Link>

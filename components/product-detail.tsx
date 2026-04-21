@@ -28,7 +28,7 @@ import { OrnamentDivider } from "@/components/ornaments"
 import { useReveal } from "@/hooks/use-reveal"
 import { cn } from "@/lib/utils"
 
-const STORE_WHATSAPP = "919043029496"
+const STORE_WHATSAPP = "918056418040"
 
 function buildSingleItemMessage(p: Product, qty: number) {
   const msg = `Hello NMR Traders! I'm interested in this item:\n\n${p.name}\nPrice: ${formatInr(
@@ -309,7 +309,7 @@ export function ProductDetail({ product }: { product: Product }) {
                   className="inline-flex items-center gap-2 text-primary hover:underline"
                 >
                   <Phone className="h-4 w-4" />
-                  +91 90430 29496
+                  +91 80564 18040
                 </a>
                 <Link
                   href="/#visit"

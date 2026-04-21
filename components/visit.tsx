@@ -92,7 +92,7 @@ export function Visit() {
               Get Directions
             </a>
             <a
-              href="https://wa.me/919043029496"
+              href="https://wa.me/918056418040"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
@@ -173,21 +173,21 @@ export function Visit() {
             <ul className="mt-3 space-y-4 text-sm">
               <li>
                 <a
-                  href="tel:+919043029496"
+                  href="tel:+918056418040"
                   className="group/link block rounded-xl border border-border/70 p-3 transition-colors hover:border-primary/50 hover:bg-primary/5"
                 >
                   <span className="block text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
                     Call us
                   </span>
                   <span className="mt-1 flex items-center justify-between font-serif text-lg font-semibold text-foreground">
-                    +91 90430 29496
+                    +91 80564 18040
                     <Phone className="h-4 w-4 text-primary opacity-0 transition-opacity group-hover/link:opacity-100" />
                   </span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/919043029496"
+                  href="https://wa.me/918056418040"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group/link block rounded-xl border border-border/70 p-3 transition-colors hover:border-primary/50 hover:bg-primary/5"
@@ -196,7 +196,7 @@ export function Visit() {
                     WhatsApp
                   </span>
                   <span className="mt-1 flex items-center justify-between font-serif text-lg font-semibold text-foreground">
-                    +91 90430 29496
+                    +91 80564 18040
                     <MessageCircle className="h-4 w-4 text-primary opacity-0 transition-opacity group-hover/link:opacity-100" />
                   </span>
                 </a>
