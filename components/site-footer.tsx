@@ -63,7 +63,7 @@ export function SiteFooter() {
                 <Instagram className="h-4 w-4" />
               </Link>
               <Link
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919043029496"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
@@ -116,10 +116,10 @@ export function SiteFooter() {
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-accent" />
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+919043029496"
                   className="text-primary-foreground/80 hover:text-accent"
                 >
-                  +91 98765 43210
+                  +91 90430 29496
                 </a>
               </li>
               <li className="flex items-center gap-3">

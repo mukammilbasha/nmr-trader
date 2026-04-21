@@ -139,7 +139,7 @@ export function SiteHeader() {
               asChild
               className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-5 shadow-sm"
             >
-              <Link href="tel:+919876543210">
+              <Link href="tel:+919043029496">
                 <Phone className="mr-2 h-3.5 w-3.5" />
                 Call
               </Link>
@@ -180,7 +180,7 @@ export function SiteHeader() {
             </Link>
           ))}
           <Button asChild className="mt-2 bg-primary text-primary-foreground hover:bg-primary/90">
-            <Link href="tel:+919876543210">
+            <Link href="tel:+919043029496">
               <Phone className="mr-2 h-4 w-4" />
               Call Store
             </Link>
