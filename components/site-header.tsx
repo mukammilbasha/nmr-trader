@@ -1,51 +1,58 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { useScrolled } from "@/hooks/use-scrolled"
 import { NmrMark } from "@/components/ornaments"
+import { CartButton } from "@/components/cart/cart-button"
 
-const navItems = [
-  { href: "#home", label: "Home", index: "01" },
-  { href: "#about", label: "About", index: "02" },
-  { href: "#categories", label: "Categories", index: "03" },
-  { href: "#visit", label: "Visit", index: "04" },
-  { href: "#contact", label: "Contact", index: "05" },
+const homeNav = [
+  { href: "/#home", label: "Home", index: "01", section: "home" },
+  { href: "/#about", label: "About", index: "02", section: "about" },
+  { href: "/#categories", label: "Categories", index: "03", section: "categories" },
+  { href: "/shop", label: "Shop", index: "04", section: null },
+  { href: "/#visit", label: "Visit", index: "05", section: "visit" },
+  { href: "/#contact", label: "Contact", index: "06", section: "contact" },
 ]
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
   const scrolled = useScrolled(12)
-  const [active, setActive] = useState<string>("#home")
+  const pathname = usePathname()
+  const isShop = pathname?.startsWith("/shop")
+  const [active, setActive] = useState<string>("home")
 
-  // Scroll-spy: highlight active section
+  // Scroll-spy: highlight active section (only on home)
   useEffect(() => {
+    if (isShop) return
     if (typeof window === "undefined") return
-    const ids = navItems.map((n) => n.href.replace("#", ""))
+    const ids = homeNav.map((n) => n.section).filter(Boolean) as string[]
     const els = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => Boolean(el))
+    if (els.length === 0) return
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
+          if (entry.isIntersecting) setActive(entry.target.id)
         })
       },
       { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
     )
     els.forEach((el) => io.observe(el))
     return () => io.disconnect()
-  }, [])
+  }, [isShop])
 
   return (
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-[padding,background,box-shadow] duration-500 ease-out",
-        scrolled
-          ? "bg-background/85 backdrop-blur-md shadow-[0_1px_0_0_oklch(0.87_0.02_70/0.6)]"
+        scrolled || isShop
+          ? "bg-background/88 backdrop-blur-md shadow-[0_1px_0_0_oklch(0.87_0.02_70/0.6)]"
           : "bg-background/0",
       )}
     >
@@ -53,7 +60,7 @@ export function SiteHeader() {
       <div
         className={cn(
           "w-full overflow-hidden bg-primary text-primary-foreground transition-[max-height,opacity] duration-500",
-          scrolled ? "max-h-0 opacity-0" : "max-h-10 opacity-100",
+          scrolled || isShop ? "max-h-0 opacity-0" : "max-h-10 opacity-100",
         )}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 text-[11px] uppercase tracking-[0.18em] md:px-6">
@@ -70,14 +77,14 @@ export function SiteHeader() {
       <div
         className={cn(
           "mx-auto flex max-w-7xl items-center justify-between px-4 transition-[padding] duration-500 md:px-6",
-          scrolled ? "py-2.5" : "py-4",
+          scrolled || isShop ? "py-2.5" : "py-4",
         )}
       >
-        <Link href="#home" className="group flex items-center gap-3">
+        <Link href="/" className="group flex items-center gap-3">
           <div
             className={cn(
               "transition-transform duration-500 group-hover:rotate-[-6deg]",
-              scrolled ? "scale-[0.88]" : "scale-100",
+              scrolled || isShop ? "scale-[0.88]" : "scale-100",
             )}
           >
             <NmrMark size={44} />
@@ -86,7 +93,7 @@ export function SiteHeader() {
             <span
               className={cn(
                 "font-serif font-serif-tight font-bold text-primary transition-all duration-500",
-                scrolled ? "text-base md:text-lg" : "text-lg md:text-xl",
+                scrolled || isShop ? "text-base md:text-lg" : "text-lg md:text-xl",
               )}
             >
               NMR Traders
@@ -97,9 +104,11 @@ export function SiteHeader() {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation">
-          {navItems.map((item) => {
-            const isActive = active === item.href
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Main navigation">
+          {homeNav.map((item) => {
+            const isActive =
+              (item.href === "/shop" && isShop) ||
+              (!isShop && item.section === active)
             return (
               <Link
                 key={item.href}
@@ -124,38 +133,42 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="hidden md:block">
-          <Button
-            asChild
-            className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-5 shadow-sm"
-          >
-            <Link href="tel:+919876543210">
-              <Phone className="mr-2 h-3.5 w-3.5" />
-              Call Store
-            </Link>
-          </Button>
-        </div>
+        <div className="flex items-center gap-2">
+          <div className="hidden md:block">
+            <Button
+              asChild
+              className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-5 shadow-sm"
+            >
+              <Link href="tel:+919876543210">
+                <Phone className="mr-2 h-3.5 w-3.5" />
+                Call
+              </Link>
+            </Button>
+          </div>
 
-        <button
-          type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+          <CartButton />
+
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground lg:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       <div
         className={cn(
-          "overflow-hidden border-t border-border/60 bg-background md:hidden",
-          open ? "max-h-[22rem]" : "max-h-0",
+          "overflow-hidden border-t border-border/60 bg-background lg:hidden",
+          open ? "max-h-[28rem]" : "max-h-0",
           "transition-[max-height] duration-500 ease-in-out",
         )}
       >
         <nav className="flex flex-col gap-1 px-4 py-3" aria-label="Mobile navigation">
-          {navItems.map((item) => (
+          {homeNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}

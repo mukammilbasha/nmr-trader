@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { Fraunces, Instrument_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
+import { CartProvider } from "@/components/cart/cart-context"
+import { CartDrawer } from "@/components/cart/cart-drawer"
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
@@ -19,7 +21,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "NMR Traders — Fancy Store in Arcot, Ranipet | Since 1998",
   description:
-    "NMR Traders in Arcot, Ranipet — Tamil Nadu's trusted fancy store since 1998. Bangles, imitation jewelry, cosmetics, hair accessories, return gifts and more.",
+    "NMR Traders in Arcot, Ranipet — Tamil Nadu's trusted fancy store since 1998. Bangles, imitation jewelry, cosmetics, leather products, dust bags, return gifts and more.",
   generator: "nmrtraders.in",
   keywords: [
     "NMR Traders",
@@ -27,9 +29,9 @@ export const metadata: Metadata = {
     "Fancy Store Ranipet",
     "Ranipet bangles",
     "imitation jewelry Ranipet",
-    "cosmetics Arcot",
+    "leather products Arcot",
+    "dust bags Ranipet",
     "return gifts Ranipet",
-    "Tamil Nadu fancy store",
   ],
   icons: {
     icon: [
@@ -58,7 +60,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${instrumentSans.variable} ${fraunces.variable} bg-background`}>
       <body className="font-sans antialiased selection:bg-primary/90 selection:text-primary-foreground">
-        {children}
+        <CartProvider>
+          {children}
+          <CartDrawer />
+        </CartProvider>
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>

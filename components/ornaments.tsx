@@ -93,40 +93,80 @@ export function OrnamentDivider({
 }
 
 /**
- * The "leather hide" monogram from the NMR letterhead — an abstract
- * interpretation to stand in as a brand mark until a real logo file is supplied.
+ * The NMR Traders brand mark — a leather-hide shield silhouette in navy
+ * with the gold "NMR" monogram centered in it. Inspired by the real
+ * NMR Traders logo (leather-hide silhouette + gold lettering).
  */
 export function NmrMark({
   className = "",
   size = 44,
+  variant = "dark",
 }: {
   className?: string
   size?: number
+  variant?: "dark" | "light"
 }) {
+  const isDark = variant === "dark"
+  const shieldFill = isDark ? "#0B2955" : "#0B2955"
+  const shieldStroke = isDark ? "oklch(0.76 0.12 72)" : "oklch(0.72 0.13 70)"
+  const textFill = isDark ? "oklch(0.78 0.13 70)" : "oklch(0.72 0.13 65)"
+
   return (
     <svg
-      viewBox="0 0 48 48"
+      viewBox="0 0 64 64"
       width={size}
       height={size}
       className={className}
-      aria-label="NMR Traders mark"
+      aria-label="NMR Traders brand mark"
     >
       <defs>
-        <linearGradient id="nmr-grad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="oklch(0.4 0.135 22)" />
-          <stop offset="1" stopColor="oklch(0.28 0.11 18)" />
+        <linearGradient id="nmr-gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="oklch(0.88 0.12 80)" />
+          <stop offset="0.5" stopColor="oklch(0.76 0.13 72)" />
+          <stop offset="1" stopColor="oklch(0.62 0.14 55)" />
+        </linearGradient>
+        <linearGradient id="nmr-shield" x1="0.5" y1="0" x2="0.5" y2="1">
+          <stop offset="0" stopColor="#133a72" />
+          <stop offset="1" stopColor="#071f45" />
         </linearGradient>
       </defs>
-      <rect x="2" y="2" width="44" height="44" rx="6" fill="url(#nmr-grad)" />
+      {/* Leather-hide shield silhouette */}
       <path
-        d="M11 34 L11 14 L15.5 14 L24 28 L24 14 L28.5 14 L28.5 34 L24 34 L15.5 20 L15.5 34 Z"
-        fill="oklch(0.94 0.08 80)"
+        d="M32 6
+           C 22 6, 18 10, 10 10
+           C 8 14, 12 20, 10 28
+           C 10 36, 14 42, 18 48
+           C 22 54, 28 58, 32 58
+           C 36 58, 42 54, 46 48
+           C 50 42, 54 36, 54 28
+           C 52 20, 56 14, 54 10
+           C 46 10, 42 6, 32 6 Z"
+        fill="url(#nmr-shield)"
+        stroke="url(#nmr-gold)"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
       />
+      {/* Monogram "N" + stylized accent — the gold abstract shape */}
       <path
-        d="M32 14 L37 14 L37 34 L32 34 Z"
-        fill="oklch(0.76 0.12 72)"
+        d="M20 22 L20 42 L24.5 42 L24.5 30.5 L33 42 L37 42 L37 22 L32.5 22 L32.5 33 L24 22 Z"
+        fill="url(#nmr-gold)"
       />
-      <circle cx="37" cy="14" r="2" fill="oklch(0.94 0.08 80)" />
+      <circle cx="42" cy="26" r="1.6" fill="url(#nmr-gold)" />
+      <circle cx="42" cy="38" r="1.6" fill="url(#nmr-gold)" />
+      {/* Tiny SINCE 1998 badge strip */}
+      <rect x="22" y="47" width="20" height="4" rx="1" fill={shieldFill} stroke="url(#nmr-gold)" strokeWidth="0.4" />
+      <text
+        x="32"
+        y="50.4"
+        textAnchor="middle"
+        fontSize="2.6"
+        fill={textFill}
+        fontFamily="var(--font-serif)"
+        letterSpacing="0.3"
+        fontWeight="700"
+      >
+        SINCE 1998
+      </text>
     </svg>
   )
 }

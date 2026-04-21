@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { useReveal } from "@/hooks/use-reveal"
 import { OrnamentDivider } from "@/components/ornaments"
+import type { CategorySlug } from "@/lib/products"
 
 type Cat = {
   title: string
@@ -12,6 +13,7 @@ type Cat = {
   image: string
   tagline: string
   count: string
+  slug: CategorySlug
   span?: string // grid span for bento layout
 }
 
@@ -22,6 +24,7 @@ const categories: Cat[] = [
     image: "/images/cat-jewelry.jpg",
     tagline: "Bridal-ready",
     count: "200+ designs",
+    slug: "imitation-jewelry",
     span: "md:col-span-2 md:row-span-2",
   },
   {
@@ -30,6 +33,7 @@ const categories: Cat[] = [
     image: "/images/cat-bangles.jpg",
     tagline: "Glass · Metal · Stone",
     count: "Full colour wheel",
+    slug: "bangles",
   },
   {
     title: "Cosmetics & Beauty",
@@ -37,6 +41,7 @@ const categories: Cat[] = [
     image: "/images/cat-cosmetics.jpg",
     tagline: "Daily essentials",
     count: "Trusted brands",
+    slug: "cosmetics",
   },
   {
     title: "Leather Products",
@@ -44,6 +49,7 @@ const categories: Cat[] = [
     image: "/images/cat-leather.jpg",
     tagline: "Genuine & synthetic",
     count: "Premium quality",
+    slug: "leather-products",
     span: "md:col-span-2",
   },
   {
@@ -52,6 +58,7 @@ const categories: Cat[] = [
     image: "/images/cat-leather-accessories.jpg",
     tagline: "Gift-worthy",
     count: "New arrivals",
+    slug: "leather-accessories",
   },
   {
     title: "Dust Bags",
@@ -59,6 +66,7 @@ const categories: Cat[] = [
     image: "/images/cat-dustbags.jpg",
     tagline: "Preserve & protect",
     count: "All sizes",
+    slug: "dust-bags",
   },
   {
     title: "Return Gifts",
@@ -66,6 +74,7 @@ const categories: Cat[] = [
     image: "/images/cat-gifts.jpg",
     tagline: "Bulk orders welcome",
     count: "10 – 500 sets",
+    slug: "return-gifts",
     span: "md:col-span-2",
   },
   {
@@ -74,6 +83,7 @@ const categories: Cat[] = [
     image: "/images/cat-hair.jpg",
     tagline: "Everyday to bridal",
     count: "New arrivals weekly",
+    slug: "hair-accessories",
   },
   {
     title: "Toys & Stationery",
@@ -81,6 +91,7 @@ const categories: Cat[] = [
     image: "/images/cat-toys.jpg",
     tagline: "For the little ones",
     count: "Back-to-school ready",
+    slug: "toys-stationery",
   },
 ]
 
@@ -133,10 +144,11 @@ export function Categories() {
         {/* Bento grid */}
         <div className="grid grid-cols-1 gap-5 md:auto-rows-[18rem] md:grid-cols-4">
           {categories.map((category, i) => (
-            <article
+            <Link
+              href={`/shop?c=${category.slug}`}
               key={category.title}
               data-reveal
-              className={`reveal-scale card-lift group relative overflow-hidden rounded-3xl border border-border bg-card shadow-sm ${
+              className={`reveal-scale card-lift group relative block overflow-hidden rounded-3xl border border-border bg-card shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
                 category.span ?? ""
               }`}
               style={{ transitionDelay: `${i * 80}ms` }}
@@ -189,7 +201,7 @@ export function Categories() {
                   </span>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 
