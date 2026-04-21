@@ -39,6 +39,28 @@ const categories: Cat[] = [
     count: "Trusted brands",
   },
   {
+    title: "Leather Products",
+    description: "Wallets, belts, handbags and everyday leather essentials.",
+    image: "/images/cat-leather.jpg",
+    tagline: "Genuine & synthetic",
+    count: "Premium quality",
+    span: "md:col-span-2",
+  },
+  {
+    title: "Leather Accessories",
+    description: "Keychains, cardholders, watch straps and leather gift items.",
+    image: "/images/cat-leather-accessories.jpg",
+    tagline: "Gift-worthy",
+    count: "New arrivals",
+  },
+  {
+    title: "Dust Bags",
+    description: "Protective dust bags for jewelry, bags, shoes and accessories.",
+    image: "/images/cat-dustbags.jpg",
+    tagline: "Preserve & protect",
+    count: "All sizes",
+  },
+  {
     title: "Return Gifts",
     description: "Curated sets for weddings, baby showers and festivals.",
     image: "/images/cat-gifts.jpg",

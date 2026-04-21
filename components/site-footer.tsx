@@ -43,8 +43,9 @@ export function SiteFooter() {
             </div>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-primary-foreground/75">
               Your trusted neighbourhood fancy store for bangles, imitation
-              jewelry, cosmetics, gifts, and everyday essentials. Three
-              decades, one counter, countless happy customers.
+              jewelry, leather products, dust bags, cosmetics, gifts, and
+              everyday essentials. Three decades, one counter, countless happy
+              customers.
             </p>
             <div className="mt-6 flex items-center gap-3">
               <Link

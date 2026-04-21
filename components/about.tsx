@@ -161,9 +161,9 @@ export function About() {
               className="reveal text-base leading-relaxed text-muted-foreground md:text-lg"
               style={{ transitionDelay: "300ms" }}
             >
-              From sparkling bangles and elegant imitation jewelry to cosmetics,
-              toys, return gifts and bridal accessories — our shelves carry the
-              latest trends alongside timeless classics.
+              From sparkling bangles and imitation jewelry to cosmetics, leather
+              products, dust bags, return gifts and bridal accessories — our
+              shelves carry the latest trends alongside timeless classics.
             </p>
 
             <div
@@ -177,7 +177,7 @@ export function About() {
             {/* Animated stats row */}
             <dl className="mt-2 grid grid-cols-3 gap-6 border-y border-border/70 py-8 md:gap-10">
               <Stat target={27} suffix="+" label="Years serving" delay={60} />
-              <Stat target={12} suffix="+" label="Product categories" delay={160} />
+              <Stat target={15} suffix="+" label="Product categories" delay={160} />
               <Stat target={10} suffix="k+" label="Happy customers" delay={260} />
             </dl>
 
