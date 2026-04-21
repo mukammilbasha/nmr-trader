@@ -19,6 +19,7 @@ const fraunces = Fraunces({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nmr-trader.vercel.app"),
   title: "NMR Traders — Fancy Store in Arcot, Ranipet | Since 1998",
   description:
     "NMR Traders in Arcot, Ranipet — Tamil Nadu's trusted fancy store since 1998. Bangles, imitation jewelry, cosmetics, leather products, dust bags, return gifts and more.",
