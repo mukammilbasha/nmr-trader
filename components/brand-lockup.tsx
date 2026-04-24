@@ -46,7 +46,7 @@ export function BrandLockup() {
 
           {/* The logo */}
           <div className="relative flex flex-col items-center gap-6">
-            <NmrFullLogo width={360} theme="dark" showTagline />
+            <NmrFullLogo width={420} theme="dark" showTagline />
 
             <OrnamentDivider className="h-3 w-40 text-accent/80" />
 
