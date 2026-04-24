@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/site-header"
 import { Hero } from "@/components/hero"
+import { BrandLockup } from "@/components/brand-lockup"
 import { About } from "@/components/about"
 import { Categories } from "@/components/categories"
 import { FeaturedProducts } from "@/components/featured-products"
@@ -12,6 +13,7 @@ export default function Page() {
     <main className="min-h-screen bg-background">
       <SiteHeader />
       <Hero />
+      <BrandLockup />
       <About />
       <Categories />
       <FeaturedProducts />

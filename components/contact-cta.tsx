@@ -4,7 +4,7 @@ import Link from "next/link"
 import { MessageCircle, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useReveal } from "@/hooks/use-reveal"
-import { OrnamentDivider, SinceSeal } from "@/components/ornaments"
+import { NmrFullLogo, OrnamentDivider } from "@/components/ornaments"
 
 export function ContactCta() {
   useReveal()
@@ -43,11 +43,9 @@ export function ContactCta() {
             <span>Since 1998</span>
           </div>
 
-          {/* Seal */}
-          <div className="absolute right-6 top-6 hidden opacity-90 md:block">
-            <div className="rounded-full bg-primary-foreground/95 p-2">
-              <SinceSeal size={110} />
-            </div>
+          {/* Full branded logo plate */}
+          <div className="absolute right-4 top-6 hidden opacity-95 lg:block">
+            <NmrFullLogo width={210} theme="dark" showTagline={false} />
           </div>
 
           <div className="relative flex flex-col items-start gap-6 md:max-w-2xl">

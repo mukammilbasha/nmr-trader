@@ -4,60 +4,65 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Warm ivory paper */
-  --background: oklch(0.965 0.015 78);
-  --foreground: oklch(0.22 0.035 28);
+  /* Warm cream parchment — pairs cleanly with navy + gold */
+  --background: oklch(0.965 0.014 82);
+  --foreground: oklch(0.20 0.06 258);
 
-  --card: oklch(0.99 0.008 82);
-  --card-foreground: oklch(0.22 0.035 28);
+  --card: oklch(0.99 0.006 85);
+  --card-foreground: oklch(0.20 0.06 258);
 
-  --popover: oklch(0.99 0.008 82);
-  --popover-foreground: oklch(0.22 0.035 28);
+  --popover: oklch(0.99 0.006 85);
+  --popover-foreground: oklch(0.20 0.06 258);
 
-  /* Deep maroon-burgundy */
-  --primary: oklch(0.36 0.125 20);
-  --primary-foreground: oklch(0.97 0.018 80);
+  /* Deep navy blue — from the leather-shield in the NMR Traders logo */
+  --primary: oklch(0.25 0.10 258);
+  --primary-foreground: oklch(0.97 0.015 80);
 
-  --secondary: oklch(0.93 0.025 75);
-  --secondary-foreground: oklch(0.28 0.05 25);
+  --secondary: oklch(0.93 0.022 80);
+  --secondary-foreground: oklch(0.24 0.08 258);
 
   --muted: oklch(0.94 0.018 78);
-  --muted-foreground: oklch(0.48 0.04 32);
+  --muted-foreground: oklch(0.48 0.05 256);
 
-  /* Antique brass gold */
-  --accent: oklch(0.74 0.12 72);
-  --accent-foreground: oklch(0.22 0.035 28);
+  /* Metallic antique gold — from the NMR lettering */
+  --accent: oklch(0.74 0.13 82);
+  --accent-foreground: oklch(0.20 0.06 258);
 
-  /* Jewel green - for subtle highlights */
+  /* Brighter gold highlight */
+  --accent-bright: oklch(0.82 0.12 85);
+  /* Deep brass for shadow */
+  --accent-deep: oklch(0.58 0.13 80);
+
+  /* Complementary jewel tones */
   --jewel: oklch(0.42 0.09 165);
   --jewel-foreground: oklch(0.97 0.018 80);
 
-  /* Terracotta copper */
+  /* Warm copper for sale/alerts */
   --copper: oklch(0.58 0.14 42);
 
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.97 0.018 80);
+  --destructive-foreground: oklch(0.97 0.015 80);
 
-  --border: oklch(0.87 0.02 70);
-  --input: oklch(0.87 0.02 70);
-  --ring: oklch(0.36 0.125 20);
+  --border: oklch(0.87 0.02 250);
+  --input: oklch(0.87 0.02 250);
+  --ring: oklch(0.25 0.10 258);
 
-  --chart-1: oklch(0.36 0.125 20);
-  --chart-2: oklch(0.74 0.12 72);
+  --chart-1: oklch(0.25 0.10 258);
+  --chart-2: oklch(0.74 0.13 82);
   --chart-3: oklch(0.58 0.14 42);
   --chart-4: oklch(0.42 0.09 165);
-  --chart-5: oklch(0.3 0.08 25);
+  --chart-5: oklch(0.35 0.09 252);
 
   --radius: 0.625rem;
 
-  --sidebar: oklch(0.97 0.018 80);
-  --sidebar-foreground: oklch(0.22 0.035 28);
-  --sidebar-primary: oklch(0.36 0.125 20);
-  --sidebar-primary-foreground: oklch(0.97 0.018 80);
-  --sidebar-accent: oklch(0.93 0.025 75);
-  --sidebar-accent-foreground: oklch(0.28 0.05 25);
-  --sidebar-border: oklch(0.87 0.02 70);
-  --sidebar-ring: oklch(0.36 0.125 20);
+  --sidebar: oklch(0.97 0.015 80);
+  --sidebar-foreground: oklch(0.20 0.06 258);
+  --sidebar-primary: oklch(0.25 0.10 258);
+  --sidebar-primary-foreground: oklch(0.97 0.015 80);
+  --sidebar-accent: oklch(0.93 0.022 80);
+  --sidebar-accent-foreground: oklch(0.24 0.08 258);
+  --sidebar-border: oklch(0.87 0.02 250);
+  --sidebar-ring: oklch(0.25 0.10 258);
 }
 
 @theme inline {
@@ -78,6 +83,8 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-bright: var(--accent-bright);
+  --color-accent-deep: var(--accent-deep);
   --color-jewel: var(--jewel);
   --color-jewel-foreground: var(--jewel-foreground);
   --color-copper: var(--copper);
@@ -116,7 +123,6 @@
     @apply bg-background text-foreground;
     font-feature-settings: 'ss01', 'ss02', 'liga', 'calt';
   }
-  /* Variable axis tuning for Fraunces */
   .font-serif {
     font-variation-settings: 'opsz' 48, 'SOFT' 50;
   }
@@ -129,7 +135,7 @@
 }
 
 /* ----------------------------------------------------------------
-   Paper grain overlay — subtle film texture across the page
+   Paper grain overlay
 ----------------------------------------------------------------- */
 .paper-grain::before {
   content: '';
@@ -138,7 +144,7 @@
   pointer-events: none;
   opacity: 0.5;
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.18 0 0 0 0 0.32 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
 /* ----------------------------------------------------------------
@@ -178,7 +184,6 @@
   transform: scale(1);
 }
 
-/* Clip reveal for display type */
 .clip-reveal {
   clip-path: inset(0 100% 0 0);
   transition: clip-path 1200ms cubic-bezier(0.77, 0, 0.18, 1);
@@ -188,7 +193,7 @@
 }
 
 /* ----------------------------------------------------------------
-   Seal rotation (for SINCE 1998 circular seal)
+   Seal rotation
 ----------------------------------------------------------------- */
 @keyframes seal-rotate {
   from { transform: rotate(0deg); }
@@ -216,7 +221,7 @@
 }
 
 /* ----------------------------------------------------------------
-   Shimmer on badges
+   Shimmer for gold accents
 ----------------------------------------------------------------- */
 @keyframes shimmer {
   0% { background-position: -200% 0; }
@@ -225,9 +230,10 @@
 .shimmer-text {
   background: linear-gradient(
     90deg,
-    var(--accent) 0%,
-    oklch(0.88 0.13 80) 30%,
-    var(--accent) 60%
+    var(--accent-deep) 0%,
+    var(--accent-bright) 30%,
+    var(--accent) 60%,
+    var(--accent-deep) 100%
   );
   background-size: 200% 100%;
   -webkit-background-clip: text;
@@ -237,7 +243,48 @@
 }
 
 /* ----------------------------------------------------------------
-   Pulse dot (live / open indicator)
+   Gold metallic gradient — used for logo text and decorative accents
+----------------------------------------------------------------- */
+.bg-gold-metallic {
+  background: linear-gradient(
+    135deg,
+    oklch(0.88 0.10 85) 0%,
+    oklch(0.76 0.13 82) 25%,
+    oklch(0.62 0.14 78) 55%,
+    oklch(0.82 0.12 86) 85%,
+    oklch(0.56 0.13 78) 100%
+  );
+}
+
+.text-gold-metallic {
+  background: linear-gradient(
+    135deg,
+    oklch(0.88 0.10 85) 0%,
+    oklch(0.76 0.13 82) 25%,
+    oklch(0.62 0.14 78) 55%,
+    oklch(0.82 0.12 86) 85%,
+    oklch(0.56 0.13 78) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ----------------------------------------------------------------
+   Navy gradient for panels
+----------------------------------------------------------------- */
+.bg-navy-depth {
+  background: linear-gradient(
+    145deg,
+    oklch(0.30 0.10 258) 0%,
+    oklch(0.22 0.10 258) 45%,
+    oklch(0.16 0.08 260) 100%
+  );
+}
+
+/* ----------------------------------------------------------------
+   Pulse dot
 ----------------------------------------------------------------- */
 @keyframes live-pulse {
   0%, 100% { box-shadow: 0 0 0 0 oklch(0.6 0.18 150 / 0.6); }
@@ -248,7 +295,7 @@
 }
 
 /* ----------------------------------------------------------------
-   Decorative underline for links / active nav
+   Underlines
 ----------------------------------------------------------------- */
 .link-underline {
   position: relative;
@@ -272,7 +319,7 @@
 }
 
 /* ----------------------------------------------------------------
-   Fancy card hover lift
+   Card lift
 ----------------------------------------------------------------- */
 .card-lift {
   transition:
@@ -284,36 +331,36 @@
 }
 
 /* ----------------------------------------------------------------
-   Gold gradient for small accents
+   Gold sheen (for small chips / seals)
 ----------------------------------------------------------------- */
 .bg-gold-sheen {
   background: linear-gradient(
     135deg,
-    oklch(0.82 0.11 80) 0%,
-    oklch(0.74 0.13 70) 45%,
-    oklch(0.64 0.14 55) 100%
+    oklch(0.86 0.11 82) 0%,
+    oklch(0.72 0.13 78) 45%,
+    oklch(0.58 0.14 76) 100%
   );
 }
 
 /* ----------------------------------------------------------------
-   Radial vignette helper
+   Vignette
 ----------------------------------------------------------------- */
 .vignette {
   background:
     radial-gradient(
       1200px 600px at 80% 10%,
-      oklch(0.78 0.09 70 / 0.22),
+      oklch(0.78 0.10 82 / 0.18),
       transparent 60%
     ),
     radial-gradient(
       900px 500px at 10% 80%,
-      oklch(0.4 0.14 22 / 0.12),
+      oklch(0.28 0.10 258 / 0.12),
       transparent 60%
     );
 }
 
 /* ----------------------------------------------------------------
-   Kinetic underline for hero lead
+   Draw underline animation
 ----------------------------------------------------------------- */
 @keyframes draw-underline {
   from { transform: scaleX(0); }
@@ -339,7 +386,7 @@
 }
 
 /* ----------------------------------------------------------------
-   Scroll cue (down arrow in hero)
+   Scroll cue
 ----------------------------------------------------------------- */
 @keyframes scroll-cue {
   0%, 100% { transform: translateY(0); opacity: 0.7; }
@@ -350,7 +397,7 @@
 }
 
 /* ----------------------------------------------------------------
-   Respect reduced motion
+   Reduced motion
 ----------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
