@@ -6,8 +6,8 @@ import { useEffect, useState } from "react"
 import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 import { useScrolled } from "@/hooks/use-scrolled"
-import { NmrMark } from "@/components/ornaments"
 import { CartButton } from "@/components/cart/cart-button"
 
 const homeNav = [
@@ -83,11 +83,18 @@ export function SiteHeader() {
         <Link href="/" className="group flex items-center gap-3">
           <div
             className={cn(
-              "transition-transform duration-500 group-hover:rotate-[-6deg]",
-              scrolled || isShop ? "scale-[0.88]" : "scale-100",
+              "overflow-hidden rounded-lg transition-transform duration-500 group-hover:rotate-[-4deg]",
+              scrolled || isShop ? "scale-[0.85]" : "scale-100",
             )}
           >
-            <NmrMark size={44} />
+            <Image
+              src="/images/nmr-logo.png"
+              alt="NMR Traders"
+              width={52}
+              height={52}
+              className="object-cover"
+              priority
+            />
           </div>
           <div className="flex flex-col leading-none">
             <span

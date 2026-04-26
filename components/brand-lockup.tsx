@@ -1,6 +1,7 @@
 "use client"
 
-import { NmrFullLogo, OrnamentDivider } from "@/components/ornaments"
+import Image from "next/image"
+import { OrnamentDivider } from "@/components/ornaments"
 import { useReveal } from "@/hooks/use-reveal"
 
 /**
@@ -46,7 +47,14 @@ export function BrandLockup() {
 
           {/* The logo */}
           <div className="relative flex flex-col items-center gap-6">
-            <NmrFullLogo width={420} theme="dark" showTagline />
+            <Image
+                src="/images/nmr-logo.png"
+                alt="NMR Traders — Since 1998, Wholesale & Retail"
+                width={420}
+                height={420}
+                className="object-contain"
+                priority
+              />
 
             <OrnamentDivider className="h-3 w-40 text-accent/80" />
 

@@ -1,6 +1,7 @@
+import Image from "next/image"
 import Link from "next/link"
 import { Facebook, Instagram, MapPin, Phone, MessageCircle, Mail } from "lucide-react"
-import { NmrMark, OrnamentDivider } from "@/components/ornaments"
+import { OrnamentDivider } from "@/components/ornaments"
 
 export function SiteFooter() {
   return (
@@ -31,8 +32,14 @@ export function SiteFooter() {
           {/* Brand */}
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3">
-              <div className="rounded-xl bg-primary-foreground/10 p-1.5">
-                <NmrMark size={40} />
+              <div className="overflow-hidden rounded-xl">
+                <Image
+                  src="/images/nmr-logo.png"
+                  alt="NMR Traders"
+                  width={64}
+                  height={64}
+                  className="object-cover"
+                />
               </div>
               <div className="flex flex-col leading-tight">
                 <span className="font-serif text-lg font-bold">NMR Traders</span>

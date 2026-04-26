@@ -1,10 +1,11 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { MessageCircle, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useReveal } from "@/hooks/use-reveal"
-import { NmrFullLogo, OrnamentDivider } from "@/components/ornaments"
+import { OrnamentDivider } from "@/components/ornaments"
 
 export function ContactCta() {
   useReveal()
@@ -43,9 +44,15 @@ export function ContactCta() {
             <span>Since 1998</span>
           </div>
 
-          {/* Full branded logo plate */}
+          {/* Full branded logo */}
           <div className="absolute right-4 top-6 hidden opacity-95 lg:block">
-            <NmrFullLogo width={220} theme="dark" showTagline={false} />
+            <Image
+              src="/images/nmr-logo.png"
+              alt="NMR Traders"
+              width={200}
+              height={200}
+              className="rounded-2xl object-cover"
+            />
           </div>
 
           <div className="relative flex flex-col items-start gap-6 md:max-w-2xl">
