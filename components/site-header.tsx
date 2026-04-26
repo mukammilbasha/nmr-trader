@@ -12,8 +12,8 @@ import { CartButton } from "@/components/cart/cart-button"
 
 const homeNav = [
   { href: "/#home", label: "Home", index: "01", section: "home" },
-  { href: "/#about", label: "About", index: "02", section: "about" },
-  { href: "/#categories", label: "Categories", index: "03", section: "categories" },
+  { href: "/about", label: "About Us", index: "02", section: null },
+  { href: "/profile", label: "Profile", index: "03", section: null },
   { href: "/shop", label: "Shop", index: "04", section: null },
   { href: "/#visit", label: "Visit", index: "05", section: "visit" },
   { href: "/#contact", label: "Contact", index: "06", section: "contact" },

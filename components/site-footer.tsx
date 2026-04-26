@@ -88,11 +88,12 @@ export function SiteFooter() {
             </h4>
             <ul className="mt-5 space-y-3 text-sm">
               {[
-                { href: "#home", label: "Home" },
-                { href: "#about", label: "About" },
-                { href: "#categories", label: "Categories" },
-                { href: "#visit", label: "Visit Us" },
-                { href: "#contact", label: "Contact" },
+                { href: "/", label: "Home" },
+                { href: "/about", label: "About Us" },
+                { href: "/profile", label: "Company Profile" },
+                { href: "/shop", label: "Shop" },
+                { href: "/#visit", label: "Visit Us" },
+                { href: "/#contact", label: "Contact" },
               ].map((l) => (
                 <li key={l.href}>
                   <Link
